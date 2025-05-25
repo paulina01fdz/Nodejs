@@ -1,7 +1,8 @@
 //import {sumar, restar} from './OperacionesEnteros/enteros';
 const calculadora = require('./OperacionesEnteros/enteros.js');
 const express = require('express');
-const inventario = require('./OperacionesObjetos/inventario.js') ;
+const inventario = require('./OperacionesObjetos/inventario.js');
+const mongoose = require('./connfig/connection.js')
 
 const app = express ();
 
@@ -12,6 +13,11 @@ app.get('/quieroSumar', (res, req) => {
 app.get('/consultarInventario', (res, req) => {
     res.end ('<h2> Datos cargados </h2>' + inventario.cargarDatos())
 })
+
+app.get('/conectar', (req, res) => {
+    console.log('Conexion')
+})
+
 
 app.listen(8800 , ()=>{
     console.log('Ejecutando app')
